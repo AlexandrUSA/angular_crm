@@ -2,6 +2,7 @@ import { AfterContentInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '@app/shared/services/auth.service';
 import { Router } from '@angular/router';
 import { StorageService } from '@app/shared/services/storage.service';
+import { User } from '@app/shared/models/user.model';
 
 @Component({
   selector: 'crm-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnDestroy, AfterContentInit, OnInit {
   date: Date = new Date();
   user: User;
 
-  private interval: Function | null;
+  private interval: number;
 
   constructor(
     private authService: AuthService,

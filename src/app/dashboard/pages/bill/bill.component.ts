@@ -13,13 +13,30 @@ export class BillComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
+  private currency: any;
+  private bill: Bill;
+  isLoaded = false;
+
   constructor(private billService: BillService) { }
 
-  ngOnInit () {
-    this.subscription = combineLatest(
+  onRefresh () {
+    this.getData();
+  }
+
+  getData () {
+    this.isLoaded = false;
+      this.subscription = combineLatest(
       this.billService.getBill(),
       this.billService.getCurrency()
-    ).subscribe((data: [Bill, any]) => console.log(data));
+    ).subscribe(([bill, currency]: [Bill, any]) => {
+      this.bill = bill;
+      this.currency = currency;
+      this.isLoaded = true;
+    });
+  }
+
+  ngOnInit () {
+    this.getData();
   }
 
   ngOnDestroy () {
