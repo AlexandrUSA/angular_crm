@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { BillService } from '@app/dashboard/shared/services/bill/bill.service';
 import {combineLatest, Subscription} from 'rxjs/index';
+
+import { BillService } from '@app/dashboard/shared/services/bill/bill.service';
+import { Bill } from '@app/dashboard/shared/models/bill.model';
 
 @Component({
   selector: 'crm-bill',

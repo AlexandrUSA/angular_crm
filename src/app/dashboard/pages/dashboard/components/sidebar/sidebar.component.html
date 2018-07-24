@@ -15,17 +15,9 @@
     <!-- SIDEBAR MENU -->
     <nav class="menu">
       <ul class="nav metismenu">
-        <li class="active">
-          <a routerLink="/dashboard/bill"> <i class="fa fa-building-o"></i> Счет </a>
-        </li>
-        <li>
-          <a routerLink="/dashboard/history"> <i class="fa fa-flash"></i> История </a>
-        </li>
-        <li>
-          <a routerLink="/dashboard/planning"> <i class="fa fa-archive"></i> Планирование </a>
-        </li>
-        <li>
-          <a routerLink="/dashboard/records"> <i class="fa fa-plus-square"></i> Запись </a>
+        <li *ngFor="let el of menuItems"
+            routerLinkActive="active">
+          <a [routerLink]="el.link"> <i class="fa fa-{{ el.icon }}"></i> {{ el.title }} </a>
         </li>
       </ul>
     </nav>
