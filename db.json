@@ -2,9 +2,15 @@
   "users": [
     {
       "id": 1,
-      "email": "wfm@mail.ru",
-      "password": "12345678",
+      "email": "AlexandrUSA@yandex.ru",
+      "password": "1111",
       "name": "Администратор"
+    },
+    {
+      "email": "test@t.ru",
+      "password": "1111",
+      "name": "1111",
+      "id": 2
     }
   ],
   "bill": {

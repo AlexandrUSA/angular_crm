@@ -1,0 +1,81 @@
+<p class="text-xs-center">Регистрация для получения доступа</p>
+<form [(formGroup)]="form"
+      (submit)="onSubmit()">
+
+  <div class="form-group"
+       [ngClass]="{'has-error': isFieldInvalid('email')}">
+    <label for="email">Email</label>
+    <input
+      type="text"
+      class="form-control underlined"
+      id="email"
+      placeholder="Введите email"
+      formControlName="email"
+    >
+    <span class="form-help-text"
+          *ngIf="isFieldInvalid('email')">
+      <span *ngIf="form.get('email')['errors']['required']">Поле Email обязательно</span>
+      <span *ngIf="form.get('email')['errors']['exist']">Пользователь с таким Email уже существует</span>
+      <span *ngIf="form.get('email')['errors']['email']">Поле Email должно быть валидным Email-адресом</span>
+    </span>
+  </div>
+
+  <div class="form-group"
+       [ngClass]="{'has-error': isFieldInvalid('password')}">
+    <label for="password">Пароль</label>
+    <input
+      type="password"
+      class="form-control underlined"
+      id="password"
+      placeholder="Введите пароль"
+      formControlName="password"
+    >
+    <span class="form-help-text"
+          *ngIf="isFieldInvalid('password')">
+      <span *ngIf="form.get('password')['errors']['required']">Поле пароля обязательно</span>
+      <span *ngIf="form.get('password')['errors']['minlength']">Слишком короткий пароль</span>
+      <span *ngIf="form.get('password')['errors']['maxlength']">Слишком длинный пароль</span>
+    </span>
+  </div>
+
+  <div class="form-group"
+       [ngClass]="{'has-error': isFieldInvalid('name')}">
+    <label for="name">Имя</label>
+    <input
+      type="text"
+      class="form-control underlined"
+      id="name"
+      placeholder="Введите имя"
+      formControlName="name"
+    >
+    <span class="form-help-text"
+          *ngIf="isFieldInvalid('name')">
+      <span *ngIf="form.get('name')['errors']['required']">Поле имени обязательно</span>
+      <span *ngIf="form.get('name')['errors']['minlength']">Слишком короткое имя</span>
+      <span *ngIf="form.get('name')['errors']['maxlength']">Слишком длинное имя</span>
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="agree">
+      <input class="checkbox"
+             id="agree"
+             type="checkbox"
+             formControlName="accept">
+      <span>Согласен с правилами</span>
+    </label>
+  </div>
+  <div class="form-group">
+    <button type="submit"
+            class="btn btn-block btn-primary"
+            [disabled]="!form.valid">Зарегистрироваться</button>
+  </div>
+  <div class="form-group">
+    <p class="text-muted text-xs-center">
+      Уже есть аккаунт?
+      <a routerLink="/login">
+        Войти!
+      </a>
+    </p>
+  </div>
+</form>
